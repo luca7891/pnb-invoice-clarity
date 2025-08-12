@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import { KpiCard } from "../components/KpiCard";
 import { InvoiceRecord } from "../types";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, LineChart, Line, PieChart, Pie, Cell } from "recharts";
@@ -10,7 +12,7 @@ function monthKey(d?: string) {
   return `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}`;
 }
 
-export const Agent1Sheet = ({ data }: { data: InvoiceRecord[] }) => {
+export const Agent1Sheet = ({ data, onNavigate }: { data: InvoiceRecord[]; onNavigate?: (tab: "exec" | "a1" | "a2" | "a3" | "dc", next?: any) => void }) => {
   const total = data.length || 1;
   const pass = data.filter(d => d.Match_Status === "PASS").length;
   const tol = data.filter(d => d.Match_Status === "TOLERANCE_PASS").length;
@@ -65,6 +67,11 @@ export const Agent1Sheet = ({ data }: { data: InvoiceRecord[] }) => {
         <KpiCard title="Tolerance Pass Rate" value={`${Math.round((tol/total)*100)}%`} />
         <KpiCard title="Fail Rate" value={`${Math.round((fail/total)*100)}%`} />
         <KpiCard title="Avg Matching Time (days)" value={avgMatchTime} />
+      </div>
+
+      <div className="flex flex-wrap items-center justify-end gap-3">
+        <Button variant="secondary" onClick={() => onNavigate?.("a2", { matchStatus: "FAIL" })}>View Exception Details</Button>
+        <Button onClick={() => toast({ title: "Escalation sent to Buyer", description: "Procurement contact has been notified for current context." })}>Escalate to Buyer</Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

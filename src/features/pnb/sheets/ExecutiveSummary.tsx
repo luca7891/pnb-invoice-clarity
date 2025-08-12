@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { KpiCard } from "../components/KpiCard";
-import { InvoiceRecord } from "../types";
+import { InvoiceRecord, FiltersState } from "../types";
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, Bar, BarChart, PieChart, Pie, Cell } from "recharts";
 
 function monthKey(d?: string) {
@@ -10,7 +10,7 @@ function monthKey(d?: string) {
   return `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}`;
 }
 
-export const ExecutiveSummary = ({ data }: { data: InvoiceRecord[] }) => {
+export const ExecutiveSummary = ({ data, onNavigate }: { data: InvoiceRecord[]; onNavigate?: (tab: "exec" | "a1" | "a2" | "a3" | "dc", next?: Partial<FiltersState>) => void }) => {
   const kpis = useMemo(() => {
     const total = data.length;
     const pass = data.filter(d => d.Match_Status === "PASS").length;
@@ -74,14 +74,13 @@ export const ExecutiveSummary = ({ data }: { data: InvoiceRecord[] }) => {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-4">
-        <KpiCard title="Total Invoices" value={kpis.total} />
-        <KpiCard title="% Fully Matched" value={`${kpis.total ? Math.round((kpis.pass/kpis.total)*100) : 0}%`} />
-        <KpiCard title="% Tolerance Matched" value={`${kpis.total ? Math.round((kpis.tol/kpis.total)*100) : 0}%`} />
-        <KpiCard title="% Failed Matches" value={`${kpis.total ? Math.round((kpis.fail/kpis.total)*100) : 0}%`} />
-        <KpiCard title="Avg Resolution Time (days)" value={kpis.avgDays} />
-        <KpiCard title="Current DPO" value={kpis.dpo} />
-        <KpiCard title="Automation Rate" value={`${kpis.automationRate}%`} />
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <KpiCard title="Total Invoices" value={kpis.total} onClick={() => onNavigate?.("dc", {})} />
+        <KpiCard title="% Fully Matched" value={`${kpis.total ? Math.round((kpis.pass/kpis.total)*100) : 0}%`} onClick={() => onNavigate?.("a1", { matchStatus: "PASS" })} />
+        <KpiCard title="% Failed Matches" value={`${kpis.total ? Math.round((kpis.fail/kpis.total)*100) : 0}%`} onClick={() => onNavigate?.("a1", { matchStatus: "FAIL" })} />
+        <KpiCard title="Avg Resolution Time (days)" value={kpis.avgDays} onClick={() => onNavigate?.("a3", {})} />
+        <KpiCard title="Current DPO" value={kpis.dpo} onClick={() => onNavigate?.("a3", {})} />
+        <KpiCard title="Automation Rate" value={`${kpis.automationRate}%`} onClick={() => onNavigate?.("a3", {})} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

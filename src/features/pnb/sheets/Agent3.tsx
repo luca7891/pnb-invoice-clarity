@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import { KpiCard } from "../components/KpiCard";
 import { InvoiceRecord } from "../types";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, LineChart, Line, PieChart, Pie, Cell } from "recharts";
@@ -144,6 +146,7 @@ export const Agent3Sheet = ({ data }: { data: InvoiceRecord[] }) => {
                 <th>Responsible_Team</th>
                 <th>Auto_Release_Flag</th>
                 <th>Resolution_Date</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -155,6 +158,14 @@ export const Agent3Sheet = ({ data }: { data: InvoiceRecord[] }) => {
                   <td>{d.Responsible_Team}</td>
                   <td>{d.Auto_Release_Flag ? "Yes" : "No"}</td>
                   <td>{d.Resolution_Date ?? "-"}</td>
+                  <td>
+                    <div className="flex flex-wrap gap-2">
+                      <Button size="sm" variant="secondary" onClick={() => toast({ title: "Initiated GR Posting", description: `Invoice ${d.Invoice_ID}` })}>Initiate GR Posting</Button>
+                      <Button size="sm" variant="secondary" onClick={() => toast({ title: "PO Amendment Requested", description: `PO ${d.PO_Number} for Invoice ${d.Invoice_ID}` })}>Amend PO</Button>
+                      <Button size="sm" variant="secondary" onClick={() => toast({ title: "Auto-Release Triggered", description: `Invoice ${d.Invoice_ID}` })}>Trigger Auto-Release</Button>
+                      <Button size="sm" onClick={() => toast({ title: "Escalated to Manager", description: `Invoice ${d.Invoice_ID}` })}>Escalate</Button>
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>

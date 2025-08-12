@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import { KpiCard } from "../components/KpiCard";
 import { InvoiceRecord } from "../types";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, LineChart, Line } from "recharts";
@@ -10,7 +12,7 @@ function monthKey(d?: string) {
   return `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}`;
 }
 
-export const Agent2Sheet = ({ data }: { data: InvoiceRecord[] }) => {
+export const Agent2Sheet = ({ data, onNavigate }: { data: InvoiceRecord[]; onNavigate?: (tab: "exec" | "a1" | "a2" | "a3" | "dc", next?: any) => void }) => {
   const exceptions = data.filter(d => !!d.Exception_Type);
   const kExceptions = exceptions.length;
   const avgConf = exceptions.length ? (exceptions.reduce((a,b)=> a + (b.Confidence_Score ?? 0), 0) / exceptions.length) : 0;
@@ -68,6 +70,10 @@ export const Agent2Sheet = ({ data }: { data: InvoiceRecord[] }) => {
         <KpiCard title="Avg Confidence Score" value={(avgConf*100).toFixed(0) + "%"} />
         <KpiCard title="Most Frequent Root Cause" value={mostRoot} />
         <KpiCard title="Recurring Clusters Detected" value={clusters} />
+      </div>
+      <div className="flex flex-wrap items-center justify-end gap-3">
+        <Button variant="secondary" onClick={() => onNavigate?.("a3", {})}>Assign Resolution Path</Button>
+        <Button onClick={() => toast({ title: "Marked as Known Issue", description: "Current clusters and exceptions tagged for tracking." })}>Mark Exception as Known Issue</Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

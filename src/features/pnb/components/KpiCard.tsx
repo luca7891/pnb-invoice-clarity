@@ -4,11 +4,18 @@ interface KpiCardProps {
   title: string;
   value: string | number;
   subtitle?: string;
+  onClick?: () => void;
 }
 
-export const KpiCard = ({ title, value, subtitle }: KpiCardProps) => {
+export const KpiCard = ({ title, value, subtitle, onClick }: KpiCardProps) => {
+  const clickable = typeof onClick === "function";
   return (
-    <Card className="transition-transform hover:scale-[1.01]">
+    <Card
+      role={clickable ? "button" : undefined}
+      tabIndex={clickable ? 0 : undefined}
+      onClick={onClick}
+      className={`transition-transform hover:scale-[1.01] ${clickable ? "cursor-pointer" : ""}`}
+    >
       <CardHeader>
         <CardTitle className="text-sm text-muted-foreground">{title}</CardTitle>
       </CardHeader>
