@@ -13,11 +13,11 @@ const DelhaizeDashboard = () => {
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4 p-6 bg-card border border-border rounded-lg shadow-sm">
             <div className="p-2 rounded-lg bg-slate-50/0">
-              <img src="/lovable-uploads/8813f45d-19f5-4076-9e6b-9633cd39a62c.png" alt="Delhaize Logo" className="h-16 w-16" />
+              <img src="/lovable-uploads/2e75a46c-10a0-4398-8d1a-2e49d743a8c9.png" alt="Signify Logo" className="h-16 w-16" />
             </div>
             <div>
               <h1 className="text-3xl font-bold text-foreground">Predictive Logistics Dashboard</h1>
-              <p className="text-muted-foreground">Real-time insights powered by Delhaize data</p>
+              <p className="text-muted-foreground">Real-time insights powered by Signify data</p>
             </div>
           </div>
           

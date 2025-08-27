@@ -17,8 +17,8 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    /* Delhaize Brand Colors - Red (#D1322A), Black (#000000), White (#FFFFFF) */
-    --primary: 4 75% 49%;
+    /* Signify Brand Colors - Green (#00D86A), Black (#000000), White (#FFFFFF) */
+    --primary: 154 100% 42%;
     --primary-foreground: 0 0% 100%;
     
     --secondary: 0 0% 5%;
@@ -27,8 +27,8 @@ All colors MUST be HSL.
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 4 75% 95%;
-    --accent-foreground: 4 75% 20%;
+    --accent: 154 100% 95%;
+    --accent-foreground: 154 100% 20%;
 
     /* Critical - Dark red */
     --destructive: 0 65% 40%;
@@ -52,7 +52,7 @@ All colors MUST be HSL.
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 355 85% 50%;
+    --ring: 154 100% 42%;
 
     --radius: 0.5rem;
 
