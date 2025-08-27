@@ -101,7 +101,7 @@ export const WarehouseCapacityPanel = () => {
                   <strong className="bg-[#000d60]/0 rounded-none">{missingStaff} operators short</strong> - Estimated delay: <strong>+{Math.round(estimatedDelay)} minutes</strong> per order
                 </p>
               </div>
-              <Button variant="destructive" size="sm" className="bg-red-600 hover:bg-red-500">
+              <Button variant="destructive" size="sm" className="bg-green-500 hover:bg-green-400">
                 Alert Management
               </Button>
             </div>
@@ -199,10 +199,10 @@ export const WarehouseCapacityPanel = () => {
               </div>
 
               <div className="flex gap-2">
-                <Button size="sm" variant="outline" className="flex-1 text-slate-50 bg-red-600 hover:bg-red-500">
+                <Button size="sm" variant="outline" className="flex-1 text-slate-50 bg-green-500 hover:bg-green-400">
                   Request Overtime
                 </Button>
-                <Button size="sm" variant="outline" className="flex-1 text-slate-50 bg-red-600 hover:bg-red-500">
+                <Button size="sm" variant="outline" className="flex-1 text-slate-50 bg-green-500 hover:bg-green-400">
                   Temp Staff
                 </Button>
               </div>
@@ -224,7 +224,7 @@ export const WarehouseCapacityPanel = () => {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-4 border rounded-lg bg-red-300">
+            <div className="p-4 border rounded-lg bg-green-300">
               <div className="font-medium mb-2">Immediate (Next 2 hours)</div>
               <ul className="text-sm space-y-1 text-muted-foreground">
                 <li>• Call in 8 overtime operators</li>
@@ -233,7 +233,7 @@ export const WarehouseCapacityPanel = () => {
               </ul>
             </div>
             
-            <div className="p-4 border rounded-lg bg-red-200">
+            <div className="p-4 border rounded-lg bg-green-200">
               <div className="font-medium mb-2">Short-term (Today)</div>
               <ul className="text-sm space-y-1 text-muted-foreground">
                 <li>• Contact temp agency for 5 operators</li>
@@ -242,7 +242,7 @@ export const WarehouseCapacityPanel = () => {
               </ul>
             </div>
             
-            <div className="p-4 border rounded-lg bg-red-100">
+            <div className="p-4 border rounded-lg bg-green-100">
               <div className="font-medium mb-2">Medium-term (This week)</div>
               <ul className="text-sm space-y-1 text-muted-foreground">
                 <li>• Review staffing patterns</li>
