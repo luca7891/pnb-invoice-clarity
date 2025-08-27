@@ -17,7 +17,7 @@ const DelhaizeDashboard = () => {
             </div>
             <div>
               <h1 className="text-3xl font-bold text-foreground">Predictive Logistics Dashboard</h1>
-              <p className="text-muted-foreground">Real-time insights powered by Signify data</p>
+              <p className="text-muted-foreground">Real-time insights</p>
             </div>
           </div>
           
