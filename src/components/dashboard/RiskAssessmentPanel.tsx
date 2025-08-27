@@ -198,9 +198,9 @@ export const RiskAssessmentPanel = () => {
                 </div>
 
                 <div className="flex gap-2 mt-3">
-                  <Button size="sm" variant="outline" className="text-slate-50 bg-red-600 hover:bg-red-500">Reroute</Button>
-                  <Button size="sm" variant="outline" className="text-slate-50 bg-red-600 hover:bg-red-500">Priority Load</Button>
-                  <Button size="sm" variant="outline" className="text-slate-50 bg-red-600 hover:bg-red-500">Alert Store</Button>
+                  <Button size="sm" variant="outline" className="text-slate-50 bg-green-500 hover:bg-green-400">Reroute</Button>
+                  <Button size="sm" variant="outline" className="text-slate-50 bg-green-500 hover:bg-green-400">Priority Load</Button>
+                  <Button size="sm" variant="outline" className="text-slate-50 bg-green-500 hover:bg-green-400">Alert Store</Button>
                 </div>
               </div>)}
           </div>
