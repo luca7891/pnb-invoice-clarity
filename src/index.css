@@ -9,49 +9,68 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Delhaize Brand Colors - Red (#D1322A), Black (#000000), White (#FFFFFF) */
+    --primary: 4 75% 49%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 5%;
+    --secondary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 4 75% 95%;
+    --accent-foreground: 4 75% 20%;
 
-    --accent: 48 96% 53%; /* Celonis-inspired yellow accent */
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Critical - Dark red */
+    --destructive: 0 65% 40%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* High risk - Lighter red */
+    --high-risk: 0 75% 55%;
+    --high-risk-foreground: 0 0% 100%;
+    
+    /* Medium risk - Yellow/Orange */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    
+    /* Low risk - Green */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Info variants */
+    --info: 221 83% 53%;
+    --info-foreground: 0 0% 100%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 20%;
+    --ring: 355 85% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Brand additions */
-    --brand: 48 96% 53%;
-    --brand-foreground: 240 5.9% 10%;
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--brand) / 0.25));
-    --shadow-glow: 0 10px 30px -10px hsl(var(--brand) / 0.35);
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -73,11 +92,24 @@ All colors MUST be HSL.
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 48 96% 53%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Critical - Dark red for dark mode */
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* High risk - Lighter red for dark mode */
+    --high-risk: 0 75% 60%;
+    --high-risk-foreground: 0 0% 100%;
+    
+    /* Medium risk - Yellow for dark mode */
+    --warning: 38 85% 55%;
+    --warning-foreground: 0 0% 0%;
+    
+    /* Low risk - Green for dark mode */
+    --success: 142 70% 40%;
+    --success-foreground: 0 0% 100%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
@@ -99,12 +131,6 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    background-image: var(--gradient-primary);
-    background-attachment: fixed;
+    @apply bg-background text-foreground;
   }
-}
-
-@layer utilities {
-  .shadow-glow { box-shadow: var(--shadow-glow); }
 }
